@@ -1,0 +1,143 @@
+@import url(global.css);
+
+body {
+    background-image: url(../css/resources/bg.jpg);
+    background-size: 300%;
+    background-position-y: 0px;
+    background-position-x: -450px;
+    background-repeat: no-repeat;
+    background-color: rgba(36, 35, 35, 0.775);
+}
+
+
+@media only screen and (min-width: 768px) {
+    body {
+        background-size: 230%;
+        background-position-y: 0px;
+        background-position-x: -450px;
+    }
+}
+
+
+@media screen and (min-width: 1025px) {
+    body {
+        background-size: 100%;
+        background-position-y: 0px;
+        background-position-x: 0px;
+    }
+}
+
+
+
+
+.student-record-title {
+    position: relative;
+    font-size: 52px;
+    font-family: var(--poppins-);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    top: 50px;
+    background-color: rgba(0, 0, 0, 0.844);
+    width: 900px;
+    margin: auto;
+    padding: 20px 60px;
+    border-radius: 7px;
+}
+
+
+
+.search-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    max-width: 1400px;
+    margin-top: 90px;
+}
+
+.search-wrapper input {
+    position: relative;
+    padding: 15px 25px;
+    max-width: 400px;
+    font-size: 18px;
+    float: right;
+    font-family: var(--poppins-);
+}
+
+.search-wrappe i {
+    position: absolute;
+}
+
+.student-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    height: 650px;
+    background-color: rgba(0, 0, 0, 0.576);
+    margin: auto;
+    top: 20px;
+    border-radius: 12px;
+    overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f12a;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.741);
+    border-radius: 20px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.student-wrapper table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.student-wrapper table,
+.student-wrapper th,
+.student-wrapper td {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    font-family: var(--poppins-);
+    font-size: 18px;
+}
+
+.student-wrapper td {
+    padding: 20px 0;
+}
+
+
+.student-wrapper th {
+    padding-top: 30px;
+    font-size: 18px;
+}
+
+.student-wrapper th:last-child {
+    width: 250px;
+}
+
+.student-wrapper tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.296);
+    width: 96%;
+}
+
+.student-wrapper table thead {
+    color: #fff;
+    font-family: var(--poppins-);
+}

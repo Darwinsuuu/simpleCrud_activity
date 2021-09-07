@@ -1,0 +1,249 @@
+@import url(global.css);
+
+
+body {
+    background-image: url(../css/resources/bg.jpg);
+    background-size: 300%;
+    background-position-y: 0px;
+    background-position-x: -450px;
+    background-repeat: no-repeat;
+    background-color: rgba(36, 35, 35, 0.775);
+}
+
+
+@media only screen and (min-width: 768px) {
+    body {
+        background-size: 230%;
+        background-position-y: 0px;
+        background-position-x: -450px;
+    }
+}
+
+
+@media screen and (min-width: 1025px) {
+    body {
+        background-size: 100%;
+        background-position-y: 0px;
+        background-position-x: 0px;
+    }
+}
+
+
+.container-fluid {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation {
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 290px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.535);
+    box-shadow: 0 6px 20px 6px #000;
+}
+
+.content-wrapper {
+    position: relative;
+    left: 290px;
+}
+
+.nav-title h2 {
+    font-size: 26px;
+    font-family: var(--poppins-);
+    padding: 24px 10px 0;
+    color: #fff;
+    line-height: 2;
+    font-weight: 700;
+}
+
+.sub-title-nav {
+    font-size: 24px;
+    margin-left: 10px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: rgb(145, 145, 46);
+}
+
+.navigation nav {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+.navigation nav ul {
+    display: block;
+    position: relative;
+    height: 100vh;
+}
+
+.navigation nav ul li {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.navigation nav ul li a {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 25px 0 25px 35px;
+    color: #fff;
+    font-size: 16px;
+    font-family: var(--poppins-);
+    text-transform: capitalize;
+    transition: background-color .3s;
+}
+
+
+.navigation nav ul li a:hover {
+    background-color: rgba(116, 116, 23, 0.515);
+}
+
+.active {
+    background-color: rgba(116, 116, 23, 0.515);
+}
+
+.navigation nav ul li a i {
+    margin-right: 10px;
+}
+
+
+.search-wrapper {
+    display: block;
+    position: relative;
+    width: 350px;
+    top: 65px;
+    left: 1200px;
+}
+
+.search-wrapper input {
+    padding-right: 40px;
+}
+
+.search-wrapper i {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    font-size: 20px;
+}
+
+.content-card-wrapper {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.494);
+    padding: 30px 50px;
+    width: 1450px;
+    height: 750px;
+    max-height: 750px;
+    overflow: auto;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-43%);
+    box-shadow: 0 0 12px #000;
+    border-radius: 7px;
+    font-family: var(--poppins-) !important;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f12a;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.741);
+    border-radius: 20px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.content-card-wrapper h1 {
+    font-weight: 700;
+}
+
+.title-table {
+    position: absolute;
+    top: 55px;
+    left: 100px;
+    color: #fff;
+    font-family: var(--poppins-);
+    font-weight: 500;
+}
+
+
+.content-card-wrapper table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.content-card-wrapper table td {
+    padding: 10px 0;
+}
+
+.flex-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.button-wrapper i {
+    margin-right: 10px;
+}
+
+.content-card-delete-wrapper {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.919);
+    padding: 30px 50px;
+    width: 1450px;
+    height: fit-content;
+    overflow: auto;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-43%);
+    box-shadow: 0 0 12px #000;
+    border-radius: 7px;
+    font-family: var(--poppins-) !important;
+}
+
+.content-card-delete-wrapper h1 {
+    margin-bottom: 15px;
+    font-family: var(--poppins-);
+    font-weight: 500;
+}
+
+.content-card-delete-wrapper p {
+    font-family: var(--poppins-);
+    line-height: 1.8;
+}
+
+.button-delete-all-wrapper {
+    text-align: right;
+    margin-right: 25px;
+}
+
+.button-delete-all-wrapper button {
+    margin-top: 30px;
+    padding: 15px 0;
+    width: 450px;
+}
