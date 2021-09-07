@@ -42,6 +42,7 @@ with login functionality.
         - login
         - can do CRUD about student data
     - Student side
+        - login
         - VIEWING only of all STUDENT RECORDS
 
 
