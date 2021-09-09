@@ -28,6 +28,16 @@ body {
 }
 
 
+.button-logout {
+    position: absolute;
+    padding: 10px 0;
+    width: 250px;
+    top: 20px;
+    right: 20px;
+    font-family: var(--poppins-);
+    font-weight: 500;
+    color: #fff !important;
+}
 
 
 .student-record-title {

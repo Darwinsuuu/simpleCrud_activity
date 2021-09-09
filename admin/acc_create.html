@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link rel="icon" href="../css/resources/it_logo.png">
+
+    <title>Admin | View All Records</title>
+
+    <link rel="stylesheet" href="../css/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <script src="https://kit.fontawesome.com/674b5b9445.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+
+</head>
+<body>
+    
+    
+    <div class="container-fluid">
+        
+
+        <div class="navigation">
+
+            <div class="nav-title">
+                <h2>Administrator's Module</h2>
+            </div>
+
+            <nav>
+                <ul>
+
+                    <div class="sub-title-nav">
+                        <p>Student Records</p>
+                    </div>
+
+                    <li>
+                        <a href="create_student_record.html">
+                            <i class="fas fa-plus-circle"></i>
+                            Create student record
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-file-alt"></i>
+                            View all records
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="delete_all_records.html">
+                            <i class="fas fa-trash-alt"></i>
+                            Delete all records
+                        </a>
+                    </li>
+
+
+                    <div class="sub-title-nav">
+                        <p>Accounts</p>
+                    </div>
+                    
+                    <li>
+                        <a class="active" href="acc_create.html">
+                            <i class="fas fa-user-plus"></i>
+                            Create account
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="acc_update.html">
+                            <i class="fas fa-user-edit"></i>
+                            manage accounts
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-sign-out-alt"></i>
+                            logout
+                        </a>
+                    </li>
+                </ul>
+
+                
+            </nav>
+        </div>
+
+
+
+        <div class="content-wrapper">
+            
+        
+            
+            <div class="content-add-record-wrapper">
+
+
+                <div class="title-img-wrapper">
+                    <div class="img-wrapper-profile">
+                        <img src="../css/resources/undraw_Security_on_re_e491.svg" alt="undraw_Security_on_re_e491.svg">
+                    </div>
+                    
+
+                    <h1>Create new account</h1>
+
+                </div>
+
+
+                <div class="form-create-acc-wrapper">
+                    <form action="#" method="POST">
+
+
+                        <div class="form-group col-12">
+                            <label for="getCreateAccEmailAddress">Email Address</p></label>
+                            <input type="email" class="form-control" id="getCreateAccEmailAddress" name="getCreateAccEmailAddress" autocomplete="off">
+                        </div>
+    
+    
+    
+                        <div class="form-group col-12">
+                            <label for="getCreateAccPassword">Password</label>
+                            <input type="password" class="form-control" id="getCreateAccPassword" name="getCreateAccPassword" autocomplete="off">
+                        </div>
+    
+    
+                        <div class="form-group col-12">
+                            <label for="getCreateAccConfirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="getCreateAccConfirmPassword" name="getCreateAccConfirmPassword" autocomplete="off">
+                        </div>
+    
+    
+
+                        <div class="form-group col-12">
+                            <label for="getCreateAccUsername">Account Type</label>
+                            <select name="getCreateAccountType" id="getCreateAccountType" class="form-control">
+                                <option value="0" selected disabled>-- Select account type --</option>
+                                <option value="student">Student Account</option>
+                                <option value="admin">Administrator Account</option>
+                            </select>
+                        </div>
+    
+
+                        <div class="form-group col-12 mt-5">
+                            <button type="submit" class="button-submit-create btn btn-success w-100 p-4">Create new record</button>
+                        </div>
+    
+    
+                    </form>
+                </div>
+                
+               
+               
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</body>
+</html>

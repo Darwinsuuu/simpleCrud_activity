@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    // prevent users from entering page with logging in their credentials
+    if(!isset($_SESSION["ID"])) {    
+        header("Location: login.php?success=false");
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +32,11 @@
 </head>
 <body>
     
+    <a href="db/logout.php" class="btn btn-danger button-logout">LOGOUT</a>
+
     <div class="container-fluid">
 
+    
         <h1 class="student-record-title">STUDENT'S RECORD</h1>
 
         <div class="search-wrapper">

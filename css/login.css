@@ -210,6 +210,10 @@ body {
         animation: animate 2s steps(18, end), blink .75s infinite;
     }
 
+    .developer-wrapper .p-title {
+        font-weight: 700;
+    }
+
 
 }
 
@@ -240,4 +244,12 @@ body {
     }
 
     
+}
+
+
+.login-error-msg {
+    text-align: center;
+    font-family: var(--montserrat-);
+    font-size: 16px;
+    font-weight: 500;
 }

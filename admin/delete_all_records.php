@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    // prevent users from entering page with logging in their credentials
+    if(!isset($_SESSION["ID"])) {
+        header("Location: ../login.php?success=false");
+    }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,21 +51,21 @@
                     </div>
 
                     <li>
-                        <a href="#">
+                        <a href="create_student_record.php">
                             <i class="fas fa-plus-circle"></i>
                             Create student record
                         </a>
                     </li>
 
                     <li>
-                        <a href="index.html">
+                        <a href="index.php">
                             <i class="fas fa-file-alt"></i>
-                            View all records
+                            Manage Records
                         </a>
                     </li>
 
                     <li>
-                        <a class="active" href="delete_all_records.html">
+                        <a class="active" href="delete_all_records.php">
                             <i class="fas fa-trash-alt"></i>
                             Delete all records
                         </a>
@@ -64,22 +76,22 @@
                         <p>Accounts</p>
                     </div>
                     
-                    <li>
-                        <a href="#">
+                    <!-- <li>
+                        <a href="acc_create.html">
                             <i class="fas fa-user-plus"></i>
                             Create account
                         </a>
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="acc_update.html">
                             <i class="fas fa-user-edit"></i>
-                            Update account
+                            manage accounts
                         </a>
-                    </li>
+                    </li> -->
 
                     <li>
-                        <a href="#">
+                        <a href="../db/logout.php">
                             <i class="fas fa-sign-out-alt"></i>
                             logout
                         </a>
