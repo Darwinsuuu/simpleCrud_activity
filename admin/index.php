@@ -3,7 +3,7 @@
 
     // prevent users from entering page with logging in their credentials
     if(!isset($_SESSION["ID"])) {    
-        header("Location: ../login.php?success=false");
+        header("Location: ../login.php?login=false");
     }
 
 ?>

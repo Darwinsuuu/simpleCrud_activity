@@ -41,7 +41,7 @@ $("#create_student_record_form").submit(function(e){
     let stud_age = $("#getCreateStudentAge").val();
     let stud_email = $("#getCreateEmailAddress").val();
     let stud_gpa = $("#getCreateGPA").val();
-    
+    let stud_button_submit = $("#submit-data").val();
 
 
 
@@ -259,7 +259,7 @@ $("#create_student_record_form").submit(function(e){
                 stud_gpa = 0;
 
             }
-            else if(tempGPA < 1 || tempGPA > 5.0) {
+            else if(tempGPA < parseFloat(1.00) || tempGPA > parseFloat(5.00)) {
 
                 $("#error_msg3").css("display", "block");
                 $("#name_error_msg3").css("display", "block");
@@ -286,14 +286,15 @@ $("#create_student_record_form").submit(function(e){
 
 
     if (flag == 4) {
-        console.log("okay na ang lahat. hehe wag ka lang mawala :<");
+        console.log("AFTER NETOO TUTULOOOOG NA AKOOOOOOOOOOOOOO TTT^TTT");
 
         $("#msg-success-overlay").load("../db/create_stud_rec.php", {
 
             getCreateStudentName: stud_name,
             getCreateStudentAge: stud_age,
             getCreateEmailAddress: stud_email,
-            getCreateGPA: stud_gpa
+            getCreateGPA: stud_gpa,
+            btnSubmitCreateStudentRecord: stud_button_submit
 
 
         });
