@@ -116,16 +116,53 @@
 
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia cupiditate odio voluptates. Porro fugit, mollitia cum numquam a hic pariatur dolore, sed, voluptatibus laboriosam voluptates odit.
                 </p>
+                
 
                 <div class="form-group button-delete-all-wrapper">
-                    <button type="button" class="btn btn-danger">Wipe all records</button>
+                    <button type="button" id="btn-wipe" class="btn btn-danger">Wipe all records</button>
                 </div>
+
+              
             </div>
 
 
         </div>
     </div>
 
+
+    <div class="modal" id="modal-wipe">
+
+    <div class="modal-wrapper">
+            <div class="modal-title">
+                <i class="fas fa-trash-alt text-danger"></i>
+                <h3>Are you sure you want to wipe all records of the students?</h3>
+            </div>
+
+            <div class="form-group mt-4 button-wrapper-wipe">
+
+                <form action="../db/tbl_truncate.php" method="POST">
+
+                    <button type="submit" name="buttonTruncate" id="button-submit-modal-wipe" class="btn btn-danger mb-3">Wipe</button>
+                    <button type="button" id="button-close-modal-wipe" class="btn btn-primary">Cancel</button>
+
+                </form>
+                
+            </div>
+        </div>
+
+    </div>
+    
+    <?php
+
+        if(isset($_GET['records'])){
+            echo "<div class='msg-confirm-wiped-data bg-success'> <i class='fas fa-check-circle'></i><p>Student records is wiped out!</p></div>";
+        }
+
+    ?>
+
+
+
+    <script src="../js/script.js"></script>
 
 </body>
 </html>

@@ -105,65 +105,13 @@
 
         <div class="content-wrapper">
             
-            <div class="search-wrapper">
-                <input type="text" class="form-control" placeholder="Search student name...">
-                <i class="fas fa-search"></i>
-            </div>
-
             
             <h1 class="title-table">STUDENT RECORDS</h1>
             
             <div class="content-card-wrapper">
 
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- Extras -->
-
-                <div class="student-card-info">
+                <!-- student info card template -->
+                <!-- <div class="student-card-info">
 
                     <div class="img-student-card-wrapper">
                         <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
@@ -205,491 +153,99 @@
                     </div>
 
 
-                </div>
+                </div> -->
 
-                <div class="student-card-info">
+                
+                <!-- no record found template -->
+                <!-- <div class="no-record-found">
+                    <p>No record found.</p>
+                </div> -->
 
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
+                <?php
+
+                    include_once '../db/connection.php';
+
+
+                    $sql_select_records = "SELECT * FROM student";
+                    $result = mysqli_query($conn, $sql_select_records);
+
+                    if(mysqli_num_rows($result) > 0) {
+
+                        while($row = mysqli_fetch_assoc($result)) {
+
+                        
+                        echo "<div class='student-card-info'>"
+                                ."<div class='img-student-card-wrapper'>"
+                                    ."<img src='../css/resources/undraw_male_avatar_323b.svg' alt='undraw_male_avatar_323b.svg'>"
+                                                            
+                                    ."<div class='button-profile-update-delete-wrapper mt-3'>"
+                                       
+
+                                        ."<form action='edit_student_record.php?id=".$row['id']."' method='POST'>"
+                                            ."<button class='btn btn-primary w-100 mb-2' id='btnEditCardInfo'>"
+                                                ."<i class='fas fa-pencil-alt mr-1'></i>"
+                                                ."Edit"
+                                            ."</button>"
+                                        ."</form>"
+
+
+                                        ."<form action='../db/delete_record.php?id=".$row['id']."' method='POST'>"
+                                        
+
+                                            ."<button class='btn btn-danger w-100 text-white' name='btnDelete'>"
+                                                ."<i class='fas fa-trash-alt mr-1'></i>"
+                                                ."Delete"
+                                            ."</button>"
+
+                                        ."</form>"
+                                        
+                                    ."</div>"
+                            
+                                ."</div>"
+                            
+                            
+                                ."<div class='student-card-info-content-infos'>"
+                            
+                                    ."<div class='form-group'>"
+                                        ."<b>Fullname</b>"
+                                        ."<p>".$row['name']."</p>"
+                                    ."</div>"
+                            
+                                    ."<div class='form-group'>"
+                                        ."<b>Age</b>"
+                                        ."<p>".$row['age']."</p>"
+                                    ."</div>"
+                            
+                                    ."<div class='form-group'>"
+                                        ."<b>Email Address</b>"
+                                        ."<p>".$row['email']."</p>"
+                                    ."</div>"
+                            
+                                    ."<div class='form-grou'>"
+                                    ."<b>Grade Point Average (GPA)</b>"
+                                        ."<p>".$row['gpa']."</p>"
+                                    ."</div>"
+                            
+                                ."</div>"
+                            
+                            ."</div>";
+
+                        }
+
+                    } 
                     
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
+                    else {
+                        
 
-                    <div class="student-card-info-content-infos">
+                        echo "<div class='no-record-found'><p>No record found.</p></div>";
+ 
 
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
+                    }
 
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
+                ?>
 
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
 
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
 
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div class="student-card-info">
-
-                    <div class="img-student-card-wrapper">
-                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
-                    
-                        <div class="button-profile-update-delete-wrapper mt-3">
-                            <button class="btn btn-primary w-100 mb-2">
-                                <i class="fas fa-pencil-alt mr-1"></i>
-                                Edit
-                            </button>
-                            <button class="btn btn-danger w-100">
-                                <i class="fas fa-trash-alt mr-1"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="student-card-info-content-infos">
-
-                        <div class="form-group">
-                            <b>Fullname</b>
-                            <p>Labiste, Darwin Bulgado</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Age</b>
-                            <p>21 yrs old</p>
-                        </div>
-
-                        <div class="form-group">
-                            <b>Email Address</b>
-                            <p>labiste.darwin@clsu2.edu.ph</p>
-                        </div>
-
-                        <div class="form-grou">
-                            <b>Grade Point Average (GPA)</b>
-                            <p>92.56%</p>
-                        </div>
-
-                    </div>
-
-
-                </div>
 
             </div>
 
@@ -697,6 +253,55 @@
         </div>
     </div>
 
+
+    <div class="modal-card-info">
+        <div class="modal-card-info-wrapper">
+
+            <div class="modal-title-info">
+                <p>UPDATE STUDENT RECORD</p>
+            </div>
+
+            <div class="img-wrapper">
+                <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
+            </div>
+
+            <div class="modal-body-info">
+                <form action="">
+
+
+                    <div class="form-group">
+                        <label for="updateName">Fullname</label>
+                        <input type="text" class="form-control" id="updateName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateName">Age</label>
+                        <input type="text" class="form-control" id="updateName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateName">Email</label>
+                        <input type="text" class="form-control" id="updateName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateName">GPA</label>
+                        <input type="text" class="form-control" id="updateName">
+                    </div>
+
+
+                    <div class="form-group mt-5">
+                        <button class="btn btn-success w-100 mb-3 p-3">UPDATE</button>
+                        <button class="btn btn-default w-100 p-3" id="closeBtnCardInfo">CANCEL</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="../js/script.js"></script>
 
 </body>
 </html>

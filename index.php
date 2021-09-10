@@ -39,12 +39,8 @@
     
         <h1 class="student-record-title">STUDENT'S RECORD</h1>
 
-        <div class="search-wrapper">
-            <input type="text" class="form-control" placeholder="Search for student name">
-        </div>
-        
 
-        <div class="student-wrapper">
+        <div class="student-wrapper mt-5">
 
 
             <table>
@@ -57,91 +53,26 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
+                    <?php
+                        include_once 'db/connection.php';
 
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
+                        $sql_select_records = "SELECT * FROM student";
+                        $result = mysqli_query($conn, $sql_select_records);
 
+                        if(mysqli_num_rows($result) > 0) {
 
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
+                            while($row = mysqli_fetch_assoc($result)) {
 
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
+                                echo "<tr>"
+                                        ."<td>".$row["name"]."</td>"
+                                        ."<td>".$row["age"]." Yrs Old</td>"
+                                        ."<td>".$row["email"]."</td>"
+                                        ."<td>".$row["gpa"]."</td>"
+                                     ."</tr>";
+                            }
+                        }
+                    ?>
 
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td>Darwin Bulgado Labiste</td>
-                        <td>21 Yrs Old</td>
-                        <td>labiste.darwin@clsu2.edu.ph</td>
-                        <td>93.5%</td>
-                    </tr>
                 </tbody>
 
             </table>

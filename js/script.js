@@ -36,14 +36,16 @@ $("#create_student_record_form").submit(function(e){
 
 
     let flag = 0;
+    let cons = $("#page").val();
 
     let stud_name = $("#getCreateStudentName").val();
     let stud_age = $("#getCreateStudentAge").val();
     let stud_email = $("#getCreateEmailAddress").val();
     let stud_gpa = $("#getCreateGPA").val();
     let stud_button_submit = $("#submit-data").val();
+    let rounded = 0;
 
-
+    console.log(cons);
 
     // STUDENT NAME FIELD
 
@@ -233,11 +235,11 @@ $("#create_student_record_form").submit(function(e){
 
 
 
-        if (stud_gpa.match(/[^0-9]/g)) {
+        if (stud_gpa.match(/[^0-9][.]/g)) {
 
             $("#error_msg3").css("display", "block");
             $("#name_error_msg3").css("display", "block");
-            $("#name_error_msg3").text("GPA only 1-5 is acceptable. 0 score is considered as no grade.");
+            $("#name_error_msg3").text("GPA only 1.00 - 5.00 is acceptable. 0 score is considered as no grade.");
             $("#getCreateGPA").addClass("is-invalid");
 
 
@@ -256,14 +258,26 @@ $("#create_student_record_form").submit(function(e){
 
             if (tempGPA == 0) {
 
-                stud_gpa = 0;
+                stud_gpa = 0.00;
+                console.log(stud_gpa);
+                flag++;
 
             }
-            else if(tempGPA < parseFloat(1.00) || tempGPA > parseFloat(5.00)) {
+
+            else if (tempGPA < 0.01 || tempGPA < 0.99) {
+                
+                $("#error_msg3").css("display", "block");
+                $("#name_error_msg3").css("display", "block");
+                $("#name_error_msg3").text("GPA only 1.00 - 5.00 is acceptable. 0 score is considered as no grade");
+                $("#getCreateGPA").addClass("is-invalid");
+
+            }
+
+            else if(tempGPA < 1.00 || tempGPA > 5.00) {
 
                 $("#error_msg3").css("display", "block");
                 $("#name_error_msg3").css("display", "block");
-                $("#name_error_msg3").text("GPA only 1-5 is acceptable. 0 score is considered as no grade");
+                $("#name_error_msg3").text("GPA only 1.00 - 5.00 is acceptable. 0 score is considered as no grade");
                 $("#getCreateGPA").addClass("is-invalid");
 
             }
@@ -274,7 +288,9 @@ $("#create_student_record_form").submit(function(e){
                 $("#name_error_msg3").css("display", "none");
                 $("#name_error_msg3").text("");
                 $("#getCreateGPA").removeClass("is-invalid");
-
+                
+                rounded = Math.round((parseFloat(stud_gpa) + Number.EPSILON) * 100) / 100;
+                stud_gpa = rounded;
 
                 flag++;
             }
@@ -285,8 +301,12 @@ $("#create_student_record_form").submit(function(e){
 
 
 
-    if (flag == 4) {
-        console.log("AFTER NETOO TUTULOOOOG NA AKOOOOOOOOOOOOOO TTT^TTT");
+    if (flag == 4 && cons == 0) {
+        
+        // console.log(stud_name);
+        // console.log(stud_age);
+        // console.log(stud_email);
+        // console.log(stud_gpa);
 
         $("#msg-success-overlay").load("../db/create_stud_rec.php", {
 
@@ -300,15 +320,44 @@ $("#create_student_record_form").submit(function(e){
         });
         
     }
+
+    if (flag == 4 && cons == 1) {
+        
+        let id = $("#idCheck").val();
+
+        $("#msg-success-overlay").load("../db/edit_student.php", {
+
+            id: id,
+            getCreateStudentName: stud_name,
+            getCreateStudentAge: stud_age,
+            getCreateEmailAddress: stud_email,
+            getCreateGPA: stud_gpa,
+            btnSubmitCreateStudentRecord: stud_button_submit
+
+
+        });
+        
+
+        window.location.replace("../admin/index.php");
+    }
     
 
 });
 
 
-function printData(){
-    console.log(stud_name);
-    console.log(stud_age);
-    console.log(stud_email);
-    console.log(stud_gpa);
-}
+
+
+
+$("#btn-wipe").click(function(){
+
+    $("#modal-wipe").css("display", "block");
+
+});
+
+
+$("#button-close-modal-wipe").click(function(){
+
+    $("#modal-wipe").css("display", "none");
+
+});
 

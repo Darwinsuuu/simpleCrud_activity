@@ -1,9 +1,29 @@
 <?php
+    include_once '../db/connection.php';
+
     session_start();
 
     // prevent users from entering page with logging in their credentials
     if(!isset($_SESSION["ID"])) {    
         header("Location: ../login.php?success=false");
+    }
+
+    $id = $_GET['id'];
+    $sql_select_one = "SELECT * FROM student where id = $id";
+
+    $result = mysqli_query($conn, $sql_select_one);
+
+    if(mysqli_num_rows($result) > 0) {
+
+        while($row = mysqli_fetch_assoc($result)){
+
+            $name = $row["name"];
+            $age = $row["age"];
+            $email = $row["email"];
+            $gpa = $row["gpa"];
+
+        }
+
     }
 
 ?>
@@ -51,7 +71,7 @@
                     </div>
 
                     <li>
-                        <a class="active" href="create_student_record.php">
+                        <a href="create_student_record.php">
                             <i class="fas fa-plus-circle"></i>
                             Create student record
                         </a>
@@ -118,11 +138,11 @@
 
                 <div class="title-img-wrapper">
                     <div class="img-wrapper-profile">
-                        <img src="../css/resources/undraw_profile_pic_ic5t.svg" alt="undraw_profile_pic_ic5t.svg">
+                        <img src="../css/resources/undraw_male_avatar_323b.svg" alt="undraw_male_avatar_323b.svg">
                     </div>
                     
 
-                    <h1>Create new student record</h1>
+                    <h1>Update student record</h1>
 
                 </div>
     
@@ -131,11 +151,13 @@
                 <div class="form-create-wrapper">
                     <form id="create_student_record_form" action="../db/create_stud_rec.php" method="POST">
 
+                    
+                        <input type="text" id="idCheck" value="<?php echo $id ?>">
 
                         <div class="form-group col-12">
                             <label for="getCreateStudentName">Student name <p>(Given name, middle name, surname)</p></label>
                             <div class="flex-input-icon">
-                                <input type="text" class="form-control" id="getCreateStudentName" name="getCreateStudentName" autocomplete="off">
+                                <input type="text" class="form-control" id="getCreateStudentName" name="getCreateStudentName" autocomplete="off" value="<?php echo $name ?>">
                                 <i id="error_msg" class="fas fa-exclamation-circle text-danger"></i>
                             </div>
                             
@@ -146,7 +168,7 @@
                         <div class="form-group col-12">
                             <label for="getCreateStudentAge">Age</label>
                             <div class="flex-input-icon">
-                                <input type="text" class="form-control" id="getCreateStudentAge" name="getCreateStudentAge" autocomplete="off">
+                                <input type="text" class="form-control" id="getCreateStudentAge" name="getCreateStudentAge" autocomplete="off" value="<?php echo $age ?>">
                                 <i id="error_msg1" class="fas fa-exclamation-circle text-danger"></i>
                             </div>
                             
@@ -157,7 +179,7 @@
                         <div class="form-group col-12">
                             <label for="getCreateEmailAddress">Email Address</label>
                             <div class="flex-input-icon">
-                                <input type="text" class="form-control email-only" id="getCreateEmailAddress" name="getCreateEmailAddress" autocomplete="off">
+                                <input type="text" class="form-control email-only" id="getCreateEmailAddress" name="getCreateEmailAddress" autocomplete="off" value="<?php echo $email ?>">
                                 <i id="error_msg2" class="fas fa-exclamation-circle text-danger"></i>
                             </div>
                             
@@ -167,7 +189,7 @@
     
                         <div class="form-group col-12">
                             <label for="getCreateGPA">GPA</label><div class="flex-input-icon">
-                                <input type="text" class="form-control" id="getCreateGPA" name="getCreateGPA" autocomplete="off" placeholder="0.00">
+                                <input type="text" class="form-control" id="getCreateGPA" name="getCreateGPA" autocomplete="off" placeholder="0.00" value="<?php echo $gpa ?>">
                                 <i id="error_msg3" class="fas fa-exclamation-circle text-danger"></i>
                             </div>
 
@@ -180,7 +202,8 @@
                             <button type="submit" id="submit-data" name="btnSubmitCreateStudentRecord" class="button-submit-create btn btn-success w-100 p-4">Create new record</button>
                         </div>
                         
-                        <input type="text" id="page" value="0" readonly>
+                        <input type="text" id="page" value="1" readonly>
+
 
                     </form>
                 </div>
