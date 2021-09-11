@@ -272,7 +272,7 @@ body {
 
 .content-card-delete-wrapper {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.919);
+    background-color: rgba(183, 184, 182, 0.905);
     padding: 30px 50px;
     width: 1450px;
     height: fit-content;
@@ -289,6 +289,7 @@ body {
     margin-bottom: 15px;
     font-family: var(--poppins-);
     font-weight: 500;
+    text-transform: uppercase;
 }
 
 .content-card-delete-wrapper p {

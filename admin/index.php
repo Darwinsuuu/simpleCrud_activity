@@ -6,6 +6,7 @@
         header("Location: ../login.php?login=false");
     }
 
+
 ?>
 
 
@@ -168,11 +169,19 @@
 
                     $sql_select_records = "SELECT * FROM student";
                     $result = mysqli_query($conn, $sql_select_records);
+                    $tempGpa = "";
 
+                   
                     if(mysqli_num_rows($result) > 0) {
 
                         while($row = mysqli_fetch_assoc($result)) {
 
+                            if ($row["gpa"] == 0) {
+                                $tempGpa = "No grade";
+                            } else {
+                                $tempGpa = $row["gpa"];
+                            }
+        
                         
                         echo "<div class='student-card-info'>"
                                 ."<div class='img-student-card-wrapper'>"
@@ -223,7 +232,7 @@
                             
                                     ."<div class='form-grou'>"
                                     ."<b>Grade Point Average (GPA)</b>"
-                                        ."<p>".$row['gpa']."</p>"
+                                        ."<p>".$tempGpa."</p>"
                                     ."</div>"
                             
                                 ."</div>"

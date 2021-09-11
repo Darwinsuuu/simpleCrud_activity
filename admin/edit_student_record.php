@@ -197,9 +197,9 @@
                         </div>
     
 
-    
+
                         <div class="form-group col-12 mt-5">
-                            <button type="submit" id="submit-data" name="btnSubmitCreateStudentRecord" class="button-submit-create btn btn-success w-100 p-4">Create new record</button>
+                            <button type="submit" id="submit-data" name="btnSubmitCreateStudentRecord" class="button-submit-create btn btn-success w-100 p-4">Update record</button>
                         </div>
                         
                         <input type="text" id="page" value="1" readonly>

@@ -23,7 +23,7 @@ with login functionality.
     - name (varchar(50), not null)
     - age(int(2), not null)
     - email (varchar(50), not null)
-    - gpa (varchar(float), not nul)
+    - gpa (float), not nul)
 
 3. login (Table2 name)
     - id (int(11)) primary key, auto increment
@@ -48,3 +48,7 @@ with login functionality.
 
 Note: Apply any kind of CSS for your web app (much better if you will use bootstrap).
 **At the end of the activity you will submit your database file and codes.**
+
+
+
+

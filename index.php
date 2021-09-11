@@ -58,16 +58,22 @@
 
                         $sql_select_records = "SELECT * FROM student";
                         $result = mysqli_query($conn, $sql_select_records);
-
+                        $tempGpa = "";
                         if(mysqli_num_rows($result) > 0) {
 
                             while($row = mysqli_fetch_assoc($result)) {
+
+                                if ($row["gpa"] == 0) {
+                                    $tempGpa = "No grade";
+                                } else {
+                                    $tempGpa = $row["gpa"];
+                                }
 
                                 echo "<tr>"
                                         ."<td>".$row["name"]."</td>"
                                         ."<td>".$row["age"]." Yrs Old</td>"
                                         ."<td>".$row["email"]."</td>"
-                                        ."<td>".$row["gpa"]."</td>"
+                                        ."<td>".$tempGpa."</td>"
                                      ."</tr>";
                             }
                         }

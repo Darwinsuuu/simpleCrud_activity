@@ -318,7 +318,12 @@ $("#create_student_record_form").submit(function(e){
 
 
         });
-        
+
+        $("#getCreateStudentName").val("");
+        $("#getCreateStudentAge").val("");
+        $("#getCreateEmailAddress").val("");
+        $("#getCreateGPA").val("");
+
     }
 
     if (flag == 4 && cons == 1) {
@@ -337,8 +342,8 @@ $("#create_student_record_form").submit(function(e){
 
         });
         
-
-        window.location.replace("../admin/index.php");
+        // prevents users to go back to the edit record after redireting to this link path
+        window.location.replace("../admin/index.php?updated=true");
     }
     
 

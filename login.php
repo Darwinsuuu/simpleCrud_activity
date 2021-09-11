@@ -1,3 +1,26 @@
+<?php
+    include_once 'db/connection.php';
+    session_start();
+
+    if(isset($_SESSION["ID"])) {
+        
+        $id = $_SESSION["ID"];
+
+        $sql_session = "SELECT * FROM student WHERE id = $id";
+        $result = mysqli_query($conn, $sql_session);
+
+        $row = mysqli_fetch_assoc($result);
+
+        if($row["position"] == "student") {
+            header("Location: index.php");
+        }
+        else {
+            header("Location: admin/index.php");
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
